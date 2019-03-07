@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="128dp"
+            android:layout_height="135dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="32dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/logo128"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="128dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edit_text_main_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_main_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome Completo"
+                    android:inputType="textPersonName" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edit_text_main_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_main_data1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="Data"
+                    android:inputType="none" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edit_text_main_codigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_main_codigo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Código"
+                    android:inputType="textPersonName" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/bntconfir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/retangulo"
+                android:text="Confirmar"
+                android:onClick="confirmarInput"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

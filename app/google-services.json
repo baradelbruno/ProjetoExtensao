@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "474033439605",
+    "firebase_url": "https://projetomalletgolf.firebaseio.com",
+    "project_id": "projetomalletgolf",
+    "storage_bucket": "projetomalletgolf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474033439605:android:b67cbc030d239b8a",
+        "android_client_info": {
+          "package_name": "ufscar.projeto.com.br.melletgolf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474033439605-nd6pcgpkgtgolv82ff145adplt4eaba4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ufscar.projeto.com.br.melletgolf",
+            "certificate_hash": "c84aeaf2af886a72b82fcaa2ed7c53d36f93b362"
+          }
+        },
+        {
+          "client_id": "474033439605-m4p63imbg599he336riru4fj0p8th0r5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXWScLQhLsrPMqgVtqOYNQdSVDPWacgBw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474033439605-m4p63imbg599he336riru4fj0p8th0r5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
