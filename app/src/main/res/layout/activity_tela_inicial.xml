@@ -38,9 +38,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view"
             app:layout_constraintVertical_bias="0.033"
-            android:src="@drawable/usuario96"
+            android:src="@drawable/person"
             app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            app:civ_border_color="#dfe5e7"/>
 
         <TextView
             android:id="@+id/txt_inicial_nome"
@@ -57,14 +57,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintBottom_toTopOf="@+id/bntNovo_jogo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_inicial_nome"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bntNovo_jogo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -72,7 +72,9 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="32dp"
-            android:text="Button"
+            android:text="Novo Jogo"
+            android:background="@drawable/retangulo"
+            android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -86,13 +88,13 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             android:text="Pontuação"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintBottom_toTopOf="@+id/bntNovo_jogo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_inicial_cod"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/txt_qtd_partida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -101,8 +103,7 @@
             android:layout_marginBottom="8dp"
             android:ellipsize="end"
             android:freezesText="true"
-            android:text="sdasd"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintBottom_toTopOf="@+id/bntNovo_jogo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_inicial_cod"
             app:layout_constraintVertical_bias="0.0" />
@@ -114,17 +115,16 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="Partida"
-            app:layout_constraintBottom_toBottomOf="@+id/textView11"
-            app:layout_constraintStart_toEndOf="@+id/textView11"
-            app:layout_constraintTop_toTopOf="@+id/textView11" />
+            app:layout_constraintBottom_toBottomOf="@+id/txt_qtd_partida"
+            app:layout_constraintStart_toEndOf="@+id/txt_qtd_partida"
+            app:layout_constraintTop_toTopOf="@+id/txt_qtd_partida" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/txt_pnts_pontuacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@+id/textView10"
             app:layout_constraintEnd_toStartOf="@+id/textView10"
             app:layout_constraintTop_toTopOf="@+id/textView10" />

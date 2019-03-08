@@ -96,8 +96,12 @@ public class TelaInicialActivity extends AppCompatActivity {
 
                 jogador = dataSnapshot.getValue(DadosJogador.class);
 
-                Bitmap bitmap = BitmapFactory.decodeFile(jogador.getFoto());
-                perfil_img.setImageBitmap(bitmap);
+                if(dataSnapshot.child("foto").exists()) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(jogador.getFoto());
+                    perfil_img.setImageBitmap(bitmap);
+                }else{
+                    perfil_img.setImageResource(R.drawable.person);
+                }
                 nomeCompleto.setText(jogador.getNomeCompleto());
                 codigotext.setText(jogador.getCod());
 
