@@ -15,19 +15,24 @@ public class cartao2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cartao2);
-        colocaTexto();
+
+        final ArrayList<String> scores = getIntent().getExtras().getStringArrayList("valores");
+        colocaTexto(scores);
 
         Button btnVoltar = (Button) findViewById(R.id.buttonVoltar);
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent novaTela = new Intent(getApplicationContext(), cartaoActivity.class);
-                startActivity(novaTela);
+            Intent novaTela = new Intent(getApplicationContext(), cartaoActivity.class);
+
+            salvaScores(scores);
+            novaTela.putStringArrayListExtra("valores", scores);
+            startActivity(novaTela);
             }
         });
     }
 
-    public void colocaTexto() {
+    public void colocaTexto(ArrayList<String> scores) {
         EditText text;
         ArrayList<String> scores;
         scores = getIntent().getExtras().getStringArrayList("valores");
@@ -60,5 +65,23 @@ public class cartao2Activity extends AppCompatActivity {
 
         text = findViewById(R.id.score3);
         scores.set(11, text.getText().toString());
+
+        text = findViewById(R.id.score4);
+        scores.set(12, text.getText().toString());
+
+        text = findViewById(R.id.score5);
+        scores.set(13, text.getText().toString());
+
+        text = findViewById(R.id.score6);
+        scores.set(14, text.getText().toString());
+
+        text = findViewById(R.id.score7);
+        scores.set(15, text.getText().toString());
+
+        text = findViewById(R.id.score8);
+        scores.set(16, text.getText().toString());
+
+        text = findViewById(R.id.score9);
+        scores.set(17, text.getText().toString());
     }
 }

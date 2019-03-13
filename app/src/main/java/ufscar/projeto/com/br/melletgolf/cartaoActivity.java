@@ -20,17 +20,24 @@ public class cartaoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cartao);
 
-        final ArrayList<String> scores = novoArrayList(18);
+        final ArrayList<String> scores;
+
+        if (getIntent().getExtras() == null) {
+            scores = novoArrayList(18);
+        } else {
+            scores = getIntent().getExtras().getStringArrayList("valores");
+            colocaTexto(scores);
+        }
 
         Button btnProximo = findViewById(R.id.buttonConfirmar);
         btnProximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent novaTela = new Intent(getApplicationContext(), cartao2Activity.class);
+            Intent novaTela = new Intent(getApplicationContext(), cartao2Activity.class);
 
-                salvaScores(scores);
-                novaTela.putStringArrayListExtra("valores", scores);
-                startActivity(novaTela);
+            salvaScores(scores);
+            novaTela.putStringArrayListExtra("valores", scores);
+            startActivity(novaTela);
             }
         });
     }
@@ -45,11 +52,8 @@ public class cartaoActivity extends AppCompatActivity {
         return novo;
     }
 
-    public void colocaTexto(){
+    public void colocaTexto(ArrayList<String> scores){
         EditText text;
-        ArrayList<String> scores;
-
-        scores = getIntent().getExtras().getStringArrayList("valores");
 
         if (scores.get(0) != null) {
             text = findViewById(R.id.score1);
@@ -78,5 +82,23 @@ public class cartaoActivity extends AppCompatActivity {
 
         text = findViewById(R.id.score3);
         scores.set(2, text.getText().toString());
+
+        text = findViewById(R.id.score4);
+        scores.set(3, text.getText().toString());
+
+        text = findViewById(R.id.score5);
+        scores.set(4, text.getText().toString());
+
+        text = findViewById(R.id.score6);
+        scores.set(5, text.getText().toString());
+
+        text = findViewById(R.id.score7);
+        scores.set(6, text.getText().toString());
+
+        text = findViewById(R.id.score8);
+        scores.set(7, text.getText().toString());
+
+        text = findViewById(R.id.score9);
+        scores.set(8, text.getText().toString());
     }
 }
