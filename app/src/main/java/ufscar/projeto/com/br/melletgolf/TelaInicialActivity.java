@@ -22,6 +22,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,6 +60,7 @@ public class TelaInicialActivity extends AppCompatActivity {
     private String pegarData;
     private DatabaseReference myRef;
     String myFormat = "dd/MM/yyyy";
+    Button novo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,7 @@ public class TelaInicialActivity extends AppCompatActivity {
         nome = findViewById(R.id.txt_inicial_nome);
         codigotext = findViewById(R.id.txt_inicial_cod);
         Sobrenome = findViewById(R.id.txt_inicial_sobrenome);
+        novo = findViewById(R.id.bntNovo_jogo);
 
         inicializarFirebase();
         recuperarDados();
@@ -291,6 +294,12 @@ public class TelaInicialActivity extends AppCompatActivity {
         startActivityForResult(intent.createChooser(intent,"Selecionar Imagem"),REQUEST_GALERIA);
     }
 
+
+    public void btnNovo(View view) {
+
+        Intent proxtela = new Intent(TelaInicialActivity.this,addNovoJogoActivity.class);
+        startActivity(proxtela);
+    }
 }
 
 

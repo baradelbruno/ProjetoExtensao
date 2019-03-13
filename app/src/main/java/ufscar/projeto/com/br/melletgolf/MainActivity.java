@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         textInputCodigo = findViewById(R.id.edit_text_main_codigo);
         textInputSobrenome = findViewById(R.id.edit_text_main_sobrenome);
 
-
         /*caixa alta*/
         nome.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         sobrenome.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
