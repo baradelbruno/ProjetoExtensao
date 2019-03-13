@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
@@ -36,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText data;
     private EditText nome;
     private EditText codigo;
+    private EditText sobrenome;
 
     private Calendar c;
 
     private TextInputLayout textInputNome;
     private TextInputLayout textInputData;
     private TextInputLayout textInputCodigo;
+    private TextInputLayout textInputSobrenome;
 
     private DatabaseReference myRef;
 
@@ -55,9 +58,16 @@ public class MainActivity extends AppCompatActivity {
         data = findViewById(R.id.edit_text_main_data1);
         nome = findViewById(R.id.edit_main_nome);
         codigo = findViewById(R.id.edit_main_codigo);
+        sobrenome = findViewById(R.id.edit_main_sobrenome);
         textInputData = findViewById(R.id.edit_text_main_data);
         textInputNome = findViewById(R.id.edit_text_main_nome);
         textInputCodigo = findViewById(R.id.edit_text_main_codigo);
+        textInputSobrenome = findViewById(R.id.edit_text_main_sobrenome);
+
+
+        /*caixa alta*/
+        nome.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        sobrenome.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 
         calendario();
         inicializarFirebase();
@@ -67,13 +77,15 @@ public class MainActivity extends AppCompatActivity {
 
         final String reconheceCod = codigo.getText().toString().trim();
         final String reconheceNome = nome.getText().toString().trim();
+        final String reconheceSobrenome = sobrenome.getText().toString().trim();
         final String reconhecedata = data.getText().toString().trim();
 
         validarCampo(reconheceCod,reconheceNome,reconhecedata);
 
-        jogador.setNomeCompleto(reconheceNome);
+        jogador.setNome(reconheceNome);
         jogador.setCod(reconheceCod);
         setData();
+        jogador.setSobrenome(reconheceSobrenome);
 
         final String dataconvert = convertDateforString(jogador.getDataNascimento());
 
@@ -88,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
                     jogador = dataSnapshot.getValue(DadosJogador.class);
                     /*verificar se houve valor repetido e jogador novo*/
                     if (reconheceCod.equals(jogador.getCod())){
-                        if(!(reconheceNome.equals(jogador.getNomeCompleto())) ||
+                        if(!(reconheceNome.equals(jogador.getNome())) ||
                                 (!reconhecedata.equals(dataconvert))){
                             Toast.makeText(MainActivity.this, "Esse código já pertence a um jogador ", Toast.LENGTH_LONG).show();
 
-                        }else if(reconheceNome.equals(jogador.getNomeCompleto()) &&
+                        }else if(reconheceNome.equals(jogador.getNome()) &&
                                     reconhecedata.equals(dataconvert)){
 
                             passarDadosActivity(proxtela, dataconvert);
@@ -122,8 +134,12 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("codigo",cod);
         proxtela.putExtras(bundle);
 
-        String nomeC = jogador.getNomeCompleto();
-        bundle.putString("nome",nomeC);
+        String nome = jogador.getNome();
+        bundle.putString("nome",nome);
+        proxtela.putExtras(bundle);
+
+        String Sobrenome = jogador.getSobrenome();
+        bundle.putString("sobrenome",Sobrenome);
         proxtela.putExtras(bundle);
 
         String dataP = dataconvert;
@@ -144,6 +160,9 @@ public class MainActivity extends AppCompatActivity {
         }else if(isCampVazio(reconheceCod)){
             codigo.requestFocus();
             res = true;
+        }else if(!nome.equals("")){
+            reconheceNome.replaceAll("[^A-Z]","");
+            Toast.makeText(MainActivity.this,"valor" ,Toast.LENGTH_LONG).show();
         }
 
         if(res){
@@ -216,14 +235,13 @@ public class MainActivity extends AppCompatActivity {
     public void confirmarInput(View v ){
 
         jogador = new DadosJogador();
-        jogador.setNomeCompleto(nome.getText().toString());
+        jogador.setNome(nome.getText().toString());
+        jogador.setSobrenome(sobrenome.getText().toString());
         setData();
         jogador.setCod(codigo.getText().toString());
 
         VerificarExistencia();
-
     }
-
     @Override
     protected void onStop() {
         limparcampo();
@@ -244,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
         nome.setText("");
         codigo.setText("");
         data.setText("");
+        sobrenome.setText("");
     }
 
 }

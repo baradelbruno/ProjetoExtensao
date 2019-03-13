@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".cartaoActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:background="#cfcfcf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titulo1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:text="Holes" />
+
+            <TextView
+                android:id="@+id/titulo2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:text="Par" />
+
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:text="Score" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/par1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:gravity="center"
+                android:text="4" />
+
+            <EditText
+                android:id="@+id/score1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="2" />
+
+            <TextView
+                android:id="@+id/par2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="3" />
+
+            <EditText
+                android:id="@+id/score2"
+                android:layout_width="303dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="3" />
+
+            <TextView
+                android:id="@+id/par3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <EditText
+                android:id="@+id/score3"
+                android:layout_width="303dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/par4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <EditText
+                android:id="@+id/score4"
+                android:layout_width="303dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/par5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <EditText
+                android:id="@+id/score5"
+                android:layout_width="303dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/par6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <EditText
+                android:id="@+id/score6"
+                android:layout_width="303dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/par7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <EditText
+                android:id="@+id/score7"
+                android:layout_width="303dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/par8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <EditText
+                android:id="@+id/score8"
+                android:layout_width="303dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/hole9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/par9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="4" />
+
+            <EditText
+                android:id="@+id/score9"
+                android:layout_width="303dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberSigned" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/buttonConfirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="192dp"
+        android:layout_marginLeft="192dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Próxima tela"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+</android.support.constraint.ConstraintLayout>

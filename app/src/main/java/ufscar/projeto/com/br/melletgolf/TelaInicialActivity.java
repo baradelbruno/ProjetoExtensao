@@ -45,10 +45,12 @@ public class TelaInicialActivity extends AppCompatActivity {
 
     private DadosJogador jogador;
     private ImageView perfil_img;
-    private TextView nomeCompleto;
+    private TextView nome;
     private TextView codigotext;
+    private TextView Sobrenome;
     private String pegarCod;
     private String pegarNome;
+    private String pegarSobrenome;
     /*Identificador para a camera e a galeria*/
     public static final int REQUEST_CAMERA = 1;
     public static final int REQUEST_GALERIA = 0;
@@ -70,10 +72,12 @@ public class TelaInicialActivity extends AppCompatActivity {
         pegarCod = getIntent().getExtras().getString("codigo");
         pegarNome = getIntent().getExtras().getString("nome");
         pegarData = getIntent().getExtras().getString("data");
+        pegarSobrenome = getIntent().getExtras().getString("sobrenome");
 
         perfil_img = findViewById(R.id.image_view_tela_inicial_perfil);
-        nomeCompleto = findViewById(R.id.txt_inicial_nome);
+        nome = findViewById(R.id.txt_inicial_nome);
         codigotext = findViewById(R.id.txt_inicial_cod);
+        Sobrenome = findViewById(R.id.txt_inicial_sobrenome);
 
         inicializarFirebase();
         recuperarDados();
@@ -102,8 +106,10 @@ public class TelaInicialActivity extends AppCompatActivity {
                 }else{
                     perfil_img.setImageResource(R.drawable.person);
                 }
-                nomeCompleto.setText(jogador.getNomeCompleto());
+                nome.setText(jogador.getNome());
+                Sobrenome.setText(jogador.getSobrenome());
                 codigotext.setText(jogador.getCod());
+
 
             }
             @Override
@@ -250,7 +256,8 @@ public class TelaInicialActivity extends AppCompatActivity {
         jogador = new DadosJogador();
 
         jogador.setCod(pegarCod);
-        jogador.setNomeCompleto(pegarNome);
+        jogador.setNome(pegarNome);
+        jogador.setSobrenome(pegarSobrenome);
 
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
         try {
@@ -259,9 +266,8 @@ public class TelaInicialActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         jogador.setFoto((String) perfil_img.getTag());
-
+        
         myRef.child("Jogador").child(pegarCod).setValue(jogador);
     }
 

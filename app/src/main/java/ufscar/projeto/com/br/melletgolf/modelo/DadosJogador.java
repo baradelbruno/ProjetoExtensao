@@ -13,12 +13,12 @@ public class DadosJogador implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getNomeCompleto() {
-        return NomeCompleto;
+    public String getNome() {
+        return Nome;
     }
 
-    public void setNomeCompleto(String nomeCompleto) {
-        NomeCompleto = nomeCompleto;
+    public void setNome(String nome) {
+        Nome = nome;
     }
 
     public String getCod() {
@@ -37,8 +37,17 @@ public class DadosJogador implements Serializable {
         this.foto = foto;
     }
 
+    public String getSobrenome() {
+        return Sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        Sobrenome = sobrenome;
+    }
+
     private Date dataNascimento;
-    private String NomeCompleto;
+    private String Nome;
+    private String Sobrenome;
     private String Cod;
     private String foto;
 }
