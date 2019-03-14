@@ -29,15 +29,15 @@ public class cartaoActivity extends AppCompatActivity {
             colocaTexto(scores);
         }
 
-        Button btnProximo = findViewById(R.id.buttonConfirmar);
+        Button btnProximo = findViewById(R.id.buttonEncerrar);
         btnProximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent novaTela = new Intent(getApplicationContext(), cartao2Activity.class);
 
-                salvaScores(scores);
-                novaTela.putStringArrayListExtra("valores", scores);
-                startActivity(novaTela);
+            salvaScores(scores);
+            novaTela.putStringArrayListExtra("valores", scores);
+            startActivity(novaTela);
             }
         });
     }
@@ -69,6 +69,36 @@ public class cartaoActivity extends AppCompatActivity {
         if (!scores.get(2).equals("0")) {
             text.setText(scores.get(2));
         }
+
+        text = findViewById(R.id.score4);
+        if (!scores.get(3).equals("0")) {
+            text.setText(scores.get(3));
+        }
+
+        text = findViewById(R.id.score5);
+        if (!scores.get(4).equals("0")) {
+            text.setText(scores.get(4));
+        }
+
+        text = findViewById(R.id.score6);
+        if (!scores.get(5).equals("0")) {
+            text.setText(scores.get(5));
+        }
+
+        text = findViewById(R.id.score7);
+        if (!scores.get(6).equals("0")) {
+            text.setText(scores.get(6));
+        }
+
+        text = findViewById(R.id.score8);
+        if (!scores.get(7).equals("0")) {
+            text.setText(scores.get(7));
+        }
+
+        text = findViewById(R.id.score9);
+        if (!scores.get(8).equals("0")) {
+            text.setText(scores.get(8));
+        }
     }
 
     private void salvaScores(ArrayList<String> scores){
@@ -88,23 +118,37 @@ public class cartaoActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(text.getText().toString())){
             scores.set(2, text.getText().toString());
         }
-/*
+
         text = findViewById(R.id.score4);
-        scores.set(3, text.getText().toString());
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(3, text.getText().toString());
+        }
 
         text = findViewById(R.id.score5);
-        scores.set(4, text.getText().toString());
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(4, text.getText().toString());
+        }
 
         text = findViewById(R.id.score6);
-        scores.set(5, text.getText().toString());
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(5, text.getText().toString());
+        }
 
         text = findViewById(R.id.score7);
-        scores.set(6, text.getText().toString());
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(6, text.getText().toString());
+        }
 
         text = findViewById(R.id.score8);
-        scores.set(7, text.getText().toString());
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(7, text.getText().toString());
+        }
 
         text = findViewById(R.id.score9);
-        scores.set(8, text.getText().toString());*/
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(8, text.getText().toString());
+        }
     }
 }
+
+
