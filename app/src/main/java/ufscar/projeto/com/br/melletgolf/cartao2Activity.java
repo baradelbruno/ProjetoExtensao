@@ -34,7 +34,6 @@ public class cartao2Activity extends AppCompatActivity {
 
     public void colocaTexto(ArrayList<String> scores) {
         EditText text;
-        ArrayList<String> scores;
         scores = getIntent().getExtras().getStringArrayList("valores");
 
         text = findViewById(R.id.score1);

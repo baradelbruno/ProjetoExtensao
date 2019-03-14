@@ -297,8 +297,39 @@ public class TelaInicialActivity extends AppCompatActivity {
 
     public void btnNovo(View view) {
 
+        jogador = new DadosJogador();
+
         Intent proxtela = new Intent(TelaInicialActivity.this,addNovoJogoActivity.class);
+
+        passardados(proxtela);
         startActivity(proxtela);
+
+    }
+
+    private void passardados(Intent proxtela) {
+
+        Bundle bundle = new Bundle();
+
+        String cod = pegarCod;
+        bundle.putString("codigo",cod);
+        proxtela.putExtras(bundle);
+
+        String nome = pegarNome;
+        bundle.putString("nome",nome);
+        proxtela.putExtras(bundle);
+
+        String sobrenome = pegarSobrenome;
+        bundle.putString("sobrenome",sobrenome);
+        proxtela.putExtras(bundle);
+
+        String date = pegarData;
+        bundle.putString("data",date);
+        proxtela.putExtras(bundle);
+
+        String foto = jogador.getFoto();
+        bundle.putString("foto",foto);
+        proxtela.putExtras(bundle);
+
     }
 }
 

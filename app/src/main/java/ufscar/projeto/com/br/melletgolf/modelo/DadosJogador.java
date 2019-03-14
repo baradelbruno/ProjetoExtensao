@@ -50,4 +50,24 @@ public class DadosJogador implements Serializable {
     private String Sobrenome;
     private String Cod;
     private String foto;
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getEntidade() {
+        return entidade;
+    }
+
+    public void setEntidade(String entidade) {
+        this.entidade = entidade;
+    }
+
+    private String categoria;
+    private String entidade;
+
 }
