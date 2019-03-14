@@ -33,11 +33,11 @@ public class cartaoActivity extends AppCompatActivity {
         btnProximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent novaTela = new Intent(getApplicationContext(), cartao2Activity.class);
+                Intent novaTela = new Intent(getApplicationContext(), cartao2Activity.class);
 
-            salvaScores(scores);
-            novaTela.putStringArrayListExtra("valores", scores);
-            startActivity(novaTela);
+                salvaScores(scores);
+                novaTela.putStringArrayListExtra("valores", scores);
+                startActivity(novaTela);
             }
         });
     }
@@ -55,18 +55,18 @@ public class cartaoActivity extends AppCompatActivity {
     public void colocaTexto(ArrayList<String> scores){
         EditText text;
 
-        if (scores.get(0) != null) {
-            text = findViewById(R.id.score1);
+        text = findViewById(R.id.score1);
+        if (!scores.get(0).equals("0")) {
             text.setText(scores.get(0));
         }
 
-        if (scores.get(1) != null) {
-            text = findViewById(R.id.score2);
+        text = findViewById(R.id.score2);
+        if (!scores.get(1).equals("0")) {
             text.setText(scores.get(1));
         }
 
-        if (scores.get(2) != null) {
-            text = findViewById(R.id.score3);
+        text = findViewById(R.id.score3);
+        if (!scores.get(2).equals("0")) {
             text.setText(scores.get(2));
         }
     }
@@ -75,14 +75,20 @@ public class cartaoActivity extends AppCompatActivity {
         EditText text;
 
         text = findViewById(R.id.score1);
-        scores.set(0, text.getText().toString());
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(0, text.getText().toString());
+        }
 
         text = findViewById(R.id.score2);
-        scores.set(1, text.getText().toString());
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(1, text.getText().toString());
+        }
 
         text = findViewById(R.id.score3);
-        scores.set(2, text.getText().toString());
-
+        if (!TextUtils.isEmpty(text.getText().toString())){
+            scores.set(2, text.getText().toString());
+        }
+/*
         text = findViewById(R.id.score4);
         scores.set(3, text.getText().toString());
 
@@ -99,6 +105,6 @@ public class cartaoActivity extends AppCompatActivity {
         scores.set(7, text.getText().toString());
 
         text = findViewById(R.id.score9);
-        scores.set(8, text.getText().toString());
+        scores.set(8, text.getText().toString());*/
     }
 }

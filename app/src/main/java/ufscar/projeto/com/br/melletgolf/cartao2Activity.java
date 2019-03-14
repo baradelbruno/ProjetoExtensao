@@ -23,11 +23,11 @@ public class cartao2Activity extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent novaTela = new Intent(getApplicationContext(), cartaoActivity.class);
+                Intent novaTela = new Intent(getApplicationContext(), cartaoActivity.class);
 
-            salvaScores(scores);
-            novaTela.putStringArrayListExtra("valores", scores);
-            startActivity(novaTela);
+                salvaScores(scores);
+                novaTela.putStringArrayListExtra("valores", scores);
+                startActivity(novaTela);
             }
         });
     }
