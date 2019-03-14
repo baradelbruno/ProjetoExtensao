@@ -27,12 +27,8 @@
             android:name=".menuLateral"
             android:label="@string/title_activity_menu_lateral"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
         <activity android:name=".cartao2Activity" />
         <activity android:name=".cartaoActivity" />
         <activity
@@ -41,12 +37,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TelaInicialActivity" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <provider
