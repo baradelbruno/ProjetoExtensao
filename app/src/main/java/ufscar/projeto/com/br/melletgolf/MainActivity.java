@@ -19,7 +19,6 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
@@ -79,50 +78,56 @@ public class MainActivity extends AppCompatActivity {
         final String reconheceSobrenome = sobrenome.getText().toString().trim();
         final String reconhecedata = data.getText().toString().trim();
 
-        validarCampo(reconheceCod,reconheceNome,reconhecedata);
+        if(!validarCampo(reconheceCod,reconheceNome,reconhecedata,reconheceSobrenome)) {
 
-        jogador.setNome(reconheceNome);
-        jogador.setCod(reconheceCod);
-        setData();
-        jogador.setSobrenome(reconheceSobrenome);
+            jogador.setNome(reconheceNome);
+            jogador.setCod(reconheceCod);
+            setData();
+            jogador.setSobrenome(reconheceSobrenome);
+            jogador.setFoto("");
+            jogador.setCategoria("");
+            jogador.setEntidade("");
 
-        final String dataconvert = convertDateforString(jogador.getDataNascimento());
+            final String dataconvert = convertDateforString(jogador.getDataNascimento());
 
-        /*buscar no firebase*/
-        myRef.child("Jogador").child(jogador.getCod()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            /*buscar no firebase*/
+            myRef.child("Jogador").child(jogador.getCod()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                Intent proxtela = new Intent(MainActivity.this,TelaInicialActivity.class);
+                    Intent proxtela = new Intent(MainActivity.this, TelaInicialActivity.class);
 
-                if (dataSnapshot.exists()) {
-                    jogador = dataSnapshot.getValue(DadosJogador.class);
-                    /*verificar se houve valor repetido e jogador novo*/
-                    if (reconheceCod.equals(jogador.getCod())){
-                        if(!(reconheceNome.equals(jogador.getNome())) ||
-                                (!reconhecedata.equals(dataconvert))){
-                            Toast.makeText(MainActivity.this, "Esse código já pertence a um jogador ", Toast.LENGTH_LONG).show();
+                    if (dataSnapshot.exists()) {
+                        jogador = dataSnapshot.getValue(DadosJogador.class);
+                        /*verificar se houve valor repetido e jogador novo*/
+                        if (reconheceCod.equals(jogador.getCod())) {
+                            if (!(reconheceNome.equals(jogador.getNome())) ||
+                                    (!reconhecedata.equals(dataconvert)) || (!reconheceSobrenome.equals(jogador.getSobrenome()))) {
+                                Toast.makeText(MainActivity.this, "Esse código já pertence a um jogador ", Toast.LENGTH_LONG).show();
 
-                        }else if(reconheceNome.equals(jogador.getNome()) &&
-                                    reconhecedata.equals(dataconvert)){
+                            } else if (reconheceNome.equals(jogador.getNome()) &&
+                                    reconhecedata.equals(dataconvert) &&
+                                    reconheceSobrenome.equals(jogador.getSobrenome())) {
 
-                            passarDadosActivity(proxtela, dataconvert);
+                                passarDadosActivity(proxtela, dataconvert);
 
-                            startActivity(proxtela);
+                                startActivity(proxtela);
+                            }
                         }
-                    }
-                }else{
+                    } else {
 
-                    myRef.child("Jogador").child(jogador.getCod()).setValue(jogador);
-                    passarDadosActivity(proxtela, dataconvert);
-                    startActivity(proxtela);
+                        myRef.child("Jogador").child(jogador.getCod()).setValue(jogador);
+                        passarDadosActivity(proxtela, dataconvert);
+                        startActivity(proxtela);
+                    }
                 }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this,"Erro de leitura do banco "+ databaseError.getCode(), Toast.LENGTH_SHORT).show();
-            }
-        });
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(MainActivity.this, "Erro de leitura do banco " + databaseError.getCode(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private void passarDadosActivity(Intent proxtela, String dataconvert) {
@@ -130,23 +135,12 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
 
         String cod = jogador.getCod();
-        bundle.putString("codigo",cod);
+        bundle.putString("codigo", cod);
         proxtela.putExtras(bundle);
 
-        String nome = jogador.getNome();
-        bundle.putString("nome",nome);
-        proxtela.putExtras(bundle);
-
-        String Sobrenome = jogador.getSobrenome();
-        bundle.putString("sobrenome",Sobrenome);
-        proxtela.putExtras(bundle);
-
-        String dataP = dataconvert;
-        bundle.putString("data", dataP);
-        proxtela.putExtras(bundle);
     }
 
-    private void validarCampo(String reconheceCod, String reconheceNome, String reconhecedata) {
+    private boolean validarCampo(String reconheceCod, String reconheceNome, String reconhecedata, String reconheceSobrenome) {
 
         boolean res = false;
 
@@ -156,14 +150,16 @@ public class MainActivity extends AppCompatActivity {
         }else if(isCampVazio(reconhecedata)){
             data.requestFocus();
             res = true;
-        }else if(isCampVazio(reconheceCod)){
+        }else if(isCampVazio(reconheceCod)) {
             codigo.requestFocus();
+            res = true;
+        }else if(isCampVazio(reconheceSobrenome)){
+            sobrenome.requestFocus();
             res = true;
         }else if(!nome.equals("")){
             reconheceNome.replaceAll("[^A-Z]","");
-            Toast.makeText(MainActivity.this,"valor" ,Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this,"valor" ,Toast.LENGTH_LONG).show();
         }
-
         if(res){
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
             dlg.setTitle("Aviso");
@@ -171,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             dlg.setNeutralButton("OK",null);
             dlg.show();
         }
+        return res;
     }
 
     private boolean isCampVazio(String valor){

@@ -72,9 +72,6 @@ public class TelaInicialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tela_inicial);
 
         pegarCod = getIntent().getExtras().getString("codigo");
-        pegarNome = getIntent().getExtras().getString("nome");
-        pegarData = getIntent().getExtras().getString("data");
-        pegarSobrenome = getIntent().getExtras().getString("sobrenome");
 
         perfil_img = findViewById(R.id.image_view_tela_inicial_perfil);
         nome = findViewById(R.id.txt_inicial_nome);
@@ -103,7 +100,7 @@ public class TelaInicialActivity extends AppCompatActivity {
 
                 jogador = dataSnapshot.getValue(DadosJogador.class);
 
-                if(dataSnapshot.child("foto").exists()) {
+                if(!dataSnapshot.child("foto").getValue().equals("")) {
                     Bitmap bitmap = BitmapFactory.decodeFile(jogador.getFoto());
                     perfil_img.setImageBitmap(bitmap);
                 }else{
@@ -113,7 +110,6 @@ public class TelaInicialActivity extends AppCompatActivity {
                 Sobrenome.setText(jogador.getSobrenome());
                 codigotext.setText(jogador.getCod());
 
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -121,7 +117,6 @@ public class TelaInicialActivity extends AppCompatActivity {
             }
         });
     }
-
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(TelaInicialActivity.this);
         myRef = ConfiguracaoFirebase.getFirebase();
@@ -198,13 +193,31 @@ public class TelaInicialActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if (items[which].equals("Câmera")) {
-                    cameraIntent();
-                } else if (items[which].equals("Galeria")) {
-                    galeriaIntent();
-                }/*else if(items[which].equals("Remover foto")) {
-                    removerFoto();
+
+                /*Object tag = perfil_img.getTag();
+
+                if(tag != null) {
+                    boolean possuifoto = (boolean) tag;
+                    if (possuifoto) {
+                        items = new CharSequence[]{"Câmera", "Galeria", "Remover foto"};
+                    }
+
                 }*/
+                if(jogador.getFoto() != null) {
+                    if (items[which].equals("Câmera")) {
+                        cameraIntent();
+                    } else if (items[which].equals("Galeria")) {
+                        galeriaIntent();
+                    }
+                }else{
+                    if (items[which].equals("Câmera")) {
+                        cameraIntent();
+                    } else if (items[which].equals("Galeria")) {
+                        galeriaIntent();
+                    }else if(items[which].equals("Remover foto")) {
+                        //removerFoto();
+                    }
+                }
             }
         });
         builder.show();
@@ -259,19 +272,9 @@ public class TelaInicialActivity extends AppCompatActivity {
         jogador = new DadosJogador();
 
         jogador.setCod(pegarCod);
-        jogador.setNome(pegarNome);
-        jogador.setSobrenome(pegarSobrenome);
-
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-        try {
-            Date val_data = sdf.parse(pegarData);
-            jogador.setDataNascimento(val_data);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         jogador.setFoto((String) perfil_img.getTag());
         
-        myRef.child("Jogador").child(pegarCod).setValue(jogador);
+        myRef.child("Jogador").child(pegarCod).child("foto").setValue(jogador.getFoto());
     }
 
     /*tira foto pelo camera*/
@@ -294,7 +297,6 @@ public class TelaInicialActivity extends AppCompatActivity {
         startActivityForResult(intent.createChooser(intent,"Selecionar Imagem"),REQUEST_GALERIA);
     }
 
-
     public void btnNovo(View view) {
 
         jogador = new DadosJogador();
@@ -312,22 +314,6 @@ public class TelaInicialActivity extends AppCompatActivity {
 
         String cod = pegarCod;
         bundle.putString("codigo",cod);
-        proxtela.putExtras(bundle);
-
-        String nome = pegarNome;
-        bundle.putString("nome",nome);
-        proxtela.putExtras(bundle);
-
-        String sobrenome = pegarSobrenome;
-        bundle.putString("sobrenome",sobrenome);
-        proxtela.putExtras(bundle);
-
-        String date = pegarData;
-        bundle.putString("data",date);
-        proxtela.putExtras(bundle);
-
-        String foto = jogador.getFoto();
-        bundle.putString("foto",foto);
         proxtela.putExtras(bundle);
 
     }

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +49,7 @@ public class addNovoJogoActivity extends AppCompatActivity {
     private DadosJogador jogador;
 
     private DatabaseReference myRef;
+    private String valor;
     private String myFormat = "dd/MM/yyyy";
 
     @Override
@@ -56,10 +58,6 @@ public class addNovoJogoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_novo_jogo);
 
         pegarCod = getIntent().getExtras().getString("codigo");
-        pegarNome = getIntent().getExtras().getString("nome");
-        pegarSobrenome = getIntent().getExtras().getString("sobrenome");
-        pegarDate = getIntent().getExtras().getString("data");
-        pegarFoto = getIntent().getExtras().getString("foto");
 
         categoria = findViewById(R.id.editarCategoria);
         grupo = findViewById(R.id.editarGrupo);
@@ -71,10 +69,11 @@ public class addNovoJogoActivity extends AppCompatActivity {
         Button editcard = findViewById(R.id.editCardButton);
         calendario();
         inicializarFirebase();
+
         bnt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                salvarDados();
+                recuperarDados();
             }
         });
         editcard.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +84,45 @@ public class addNovoJogoActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void recuperarDados() {
+
+        //jogador = new DadosJogador();
+
+        final String reconheceEnt = entidade.getText().toString().trim();
+        final String reconheceCat = categoria.getText().toString().trim();
+
+        jogador.setEntidade(reconheceEnt);
+        jogador.setCategoria(reconheceCat);
+
+        myRef.child("Jogador").child(pegarCod).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                jogador = dataSnapshot.getValue(DadosJogador.class);
+
+                if(dataSnapshot.child("entidade").getValue().equals("")){
+
+                    Toast.makeText(addNovoJogoActivity.this,"valor" + jogador.getEntidade(),Toast.LENGTH_LONG).show();
+                    Log.i("Valor",jogador.getEntidade());
+
+                    myRef.child("entidade").setValue(reconheceEnt);
+                }else{
+                    entidade.setText(jogador.getEntidade());
+                }
+                if(dataSnapshot.child("categoria").getValue().equals("")){
+                    myRef.child("Jogador").child(pegarCod).child("categoria").setValue(reconheceCat);
+                }else{
+                    categoria.setText(jogador.getCategoria());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void calendario() {
@@ -127,41 +165,13 @@ public class addNovoJogoActivity extends AppCompatActivity {
         myRef = ConfiguracaoFirebase.getFirebase();
     }
 
-    private void salvarDados() {
-
+    /*private void salvarDados() {
 
         novoCampo = new NovoCampo();
-        jogador = new DadosJogador();
-
-       // Intent prox = new Intent(addNovoJogoActivity.this,addNovoJogoActivity.class);
-
-        /*atualizar jogador*/
-        jogador.setCod(pegarCod);
-        jogador.setNome(pegarNome);
-        jogador.setSobrenome(pegarSobrenome);
-
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-        try {
-            Date val_data = sdf.parse(pegarDate);
-            jogador.setDataNascimento(val_data);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Log.i("Foto",pegarFoto);
-
-        jogador.setFoto(pegarFoto);
-        /*falta passar a foto e verificar se é null*/
-
-        jogador.setCategoria(categoria.getText().toString());
-        jogador.setEntidade(entidade.getText().toString());
-
-        //int intgrupo = Integer.parseInt(grupo.getText().toString());
 
         novoCampo.setIdUI(UUID.randomUUID().toString());
         novoCampo.setIdJogador(pegarCod);
-        setData();
 
-        myRef.child("Jogador").child(pegarCod).setValue(jogador);
         myRef.child("NovoCampo").child(novoCampo.getIdUI()).setValue(novoCampo);
 
         limparcampo();
@@ -173,15 +183,7 @@ public class addNovoJogoActivity extends AppCompatActivity {
         entidade.setText("");
         local.setText("");
         datajogo.setText("");
-    }
+    }*/
 
-    private void setData() {
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-        try {
-            Date val_data = sdf.parse(datajogo.getText().toString());
-            novoCampo.setDataJogo(val_data);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
+
 }
