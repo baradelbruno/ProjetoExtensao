@@ -10,4 +10,6 @@
     <string name="title_activity_cadastro_local">CadastroLocalActivity</string>
     <string name="title_activity_tela_inicial_menu">TelaInicialMenuActivity</string>
     <string name="title_activity_menu_lateral">menuLateral</string>
+    <string name="title_activity_cadastra_local">CadastraLocalActivity</string>
+    <string name="title_activity_cadastra_local2">CadastraLocal2Activity</string>
 </resources>

@@ -2,17 +2,21 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".Views.cartaoActivity"
-    tools:layout_editor_absoluteY="81dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.CadastraLocalActivity">
+
 
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
         android:background="#cfcfcf"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,15 +41,6 @@
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
                 android:gravity="center"
-                android:text="Par" />
-
-            <TextView
-                android:id="@+id/titulo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:gravity="center"
                 android:text="Score" />
         </TableRow>
 
@@ -62,17 +57,8 @@
                 android:gravity="center"
                 android:text="1" />
 
-            <TextView
-                android:id="@+id/par1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:gravity="center"
-                android:text="4" />
-
             <EditText
-                android:id="@+id/score1"
+                android:id="@+id/par1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
@@ -90,16 +76,9 @@
                 android:gravity="center"
                 android:text="2" />
 
-            <TextView
+            <EditText
                 android:id="@+id/par2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="3" />
-
-            <EditText
-                android:id="@+id/score2"
-                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="numberSigned" />
@@ -116,16 +95,9 @@
                 android:gravity="center"
                 android:text="3" />
 
-            <TextView
+            <EditText
                 android:id="@+id/par3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="4" />
-
-            <EditText
-                android:id="@+id/score3"
-                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="numberSigned" />
@@ -142,16 +114,9 @@
                 android:gravity="center"
                 android:text="4" />
 
-            <TextView
+            <EditText
                 android:id="@+id/par4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="4" />
-
-            <EditText
-                android:id="@+id/score4"
-                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="numberSigned" />
@@ -168,16 +133,9 @@
                 android:gravity="center"
                 android:text="4" />
 
-            <TextView
+            <EditText
                 android:id="@+id/par5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="4" />
-
-            <EditText
-                android:id="@+id/score5"
-                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="numberSigned" />
@@ -194,16 +152,9 @@
                 android:gravity="center"
                 android:text="4" />
 
-            <TextView
+            <EditText
                 android:id="@+id/par6"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="4" />
-
-            <EditText
-                android:id="@+id/score6"
-                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="numberSigned" />
@@ -220,16 +171,9 @@
                 android:gravity="center"
                 android:text="4" />
 
-            <TextView
+            <EditText
                 android:id="@+id/par7"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="4" />
-
-            <EditText
-                android:id="@+id/score7"
-                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="numberSigned" />
@@ -246,16 +190,9 @@
                 android:gravity="center"
                 android:text="4" />
 
-            <TextView
+            <EditText
                 android:id="@+id/par8"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="4" />
-
-            <EditText
-                android:id="@+id/score8"
-                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="numberSigned" />
@@ -272,33 +209,45 @@
                 android:gravity="center"
                 android:text="4" />
 
-            <TextView
+            <EditText
                 android:id="@+id/par9"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="4" />
-
-            <EditText
-                android:id="@+id/score9"
-                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="numberSigned" />
         </TableRow>
     </TableLayout>
 
-    <Button
-        android:id="@+id/buttonConfirmar"
+    <EditText
+        android:id="@+id/textNomeCampo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="192dp"
-        android:layout_marginLeft="192dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Nome Campo"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonProximo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="196dp"
+        android:layout_marginLeft="196dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Próxima tela"
+        android:text="Proximo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

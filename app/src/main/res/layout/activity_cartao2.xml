@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cartao2Activity">
+    tools:context=".Views.cartao2Activity">
 
     <TableLayout
         android:id="@+id/tableLayout"

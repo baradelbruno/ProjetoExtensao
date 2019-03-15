@@ -1,4 +1,4 @@
-package ufscar.projeto.com.br.melletgolf;
+package ufscar.projeto.com.br.melletgolf.Views;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -19,11 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.UUID;
 
 import ufscar.projeto.com.br.melletgolf.DAO.ConfiguracaoFirebase;
 import ufscar.projeto.com.br.melletgolf.modelo.DadosJogador;

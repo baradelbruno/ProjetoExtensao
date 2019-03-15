@@ -1,4 +1,4 @@
-package ufscar.projeto.com.br.melletgolf;
+package ufscar.projeto.com.br.melletgolf.Views;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

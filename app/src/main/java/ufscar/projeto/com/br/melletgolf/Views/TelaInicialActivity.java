@@ -1,4 +1,4 @@
-package ufscar.projeto.com.br.melletgolf;
+package ufscar.projeto.com.br.melletgolf.Views;
 
 import android.Manifest;
 
@@ -20,7 +20,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,10 +33,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import ufscar.projeto.com.br.melletgolf.BuildConfig;
 import ufscar.projeto.com.br.melletgolf.DAO.ConfiguracaoFirebase;
 import ufscar.projeto.com.br.melletgolf.modelo.DadosJogador;
 

@@ -1,4 +1,4 @@
-package ufscar.projeto.com.br.melletgolf;
+package ufscar.projeto.com.br.melletgolf.Views;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

@@ -20,24 +20,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addNovoJogoActivity">
-        </activity>
-
+        <activity android:name=".Views.addNovoJogoActivity" />
         <activity
-            android:name=".menuLateral"
+            android:name=".Views.menuLateral"
             android:label="@string/title_activity_menu_lateral"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity android:name=".cartao2Activity" />
-        <activity android:name=".cartaoActivity" />
-        <activity
-            android:name=".CadastroLocalActivity"
-            android:label="@string/title_activity_cadastro_local"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TelaInicialActivity" />
-        <activity android:name=".MainActivity">
-
+        <activity android:name=".Views.cartao2Activity" />
+        <activity android:name=".Views.cartaoActivity" />
+        <activity android:name=".Views.TelaInicialActivity" />
+        <activity android:name=".Views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,6 +45,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+        <activity android:name=".modelo.CadastraLocalActivity" />
+        <activity android:name=".Views.CadastraLocalActivity" />
+        <activity android:name=".Views.CadastraLocal2Activity"></activity>
     </application>
 
 </manifest>
